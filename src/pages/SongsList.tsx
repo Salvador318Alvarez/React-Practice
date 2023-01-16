@@ -1,4 +1,5 @@
 import { useState } from "react";
+import List from "../components/List";
 //hooks have to be at the top levl of the component
 //have to be in the component to be used
 
@@ -12,6 +13,7 @@ const SongsList = () => {
     ])
 
     console.log(showSongs);
+
     const handleClick = (id:number) => {
         setSongs((prevSongs) => { //use previous state to not alter state but a copy of it
             return prevSongs.filter((song) => { //returns the array items that pass this condition
@@ -38,13 +40,10 @@ const SongsList = () => {
             )}
 
             <h1>Songs List</h1>
-            {showSongs && songs.map((song, index) => ( // conditional template
-                <div key={song.id}>
-                    <p>{index+1}. {song.title}</p>
-                    <button onClick={() => handleClick(song.id)}>delete</button>
-                </div>
-            ))}
-
+          
+            {showSongs &&
+            <List songs={songs} handleClick={handleClick}/>
+            }
         </section>
      );
 }
