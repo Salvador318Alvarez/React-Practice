@@ -39,11 +39,13 @@ const SongsList = () => {
                 </div>
             )}
 
-            <h1>Songs List</h1>
+            <h1 style={{color: showSongs? 'red': 'blue'}}>Songs List</h1>
           
             {showSongs &&
             <List songs={songs} handleClick={handleClick}/>
             }
+            
+            {/* can use dynamic inline style and class styles */}
         </section>
      );
 }
