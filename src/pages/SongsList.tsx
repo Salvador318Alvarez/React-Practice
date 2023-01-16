@@ -12,7 +12,7 @@ const SongsList = () => {
     ])
 
     console.log(showSongs);
-    const handleClick = (id) => {
+    const handleClick = (id:number) => {
         setSongs((prevSongs) => { //use previous state to not alter state but a copy of it
             return prevSongs.filter((song) => { //returns the array items that pass this condition
                 return id !== song.id  //i.e. if the array matches take it out
