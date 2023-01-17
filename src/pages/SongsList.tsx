@@ -1,18 +1,31 @@
 import { useState } from "react";
 import List from "../components/List";
+import Modal from "../components/Modal";
+import NewForm from "../components/NewForm";
 //hooks have to be at the top levl of the component
 //have to be in the component to be used
 
 const SongsList = () => {
     const [showSongs, setShowSongs] = useState(true)
-    const [songs, setSongs] =  useState([
-        {id: 1, title:'title 1'},
-        {id: 2, title:'title 2'},
-        {id: 3, title:'title 3'},
-        {id: 4, title:'title 4'}
-    ])
+    const [songs, setSongs] =  useState([])
+    const [showModal, setShowModal] = useState(false)
 
-    console.log(showSongs);
+    const handleClose = () => {
+        setShowModal(false)
+    }
+
+    const handleOpen = () => {
+        setShowModal(true)
+    }
+
+    //you can pass in functions as props to affect state!!
+
+    const addSong = (song:any) => {
+        setSongs((prevSongs) => {
+            return [...prevSongs, song]
+        })
+        setShowModal(false)
+    }
 
     const handleClick = (id:number) => {
         setSongs((prevSongs) => { //use previous state to not alter state but a copy of it
@@ -26,6 +39,14 @@ const SongsList = () => {
 
     return ( 
         <section>
+            {showModal! && 
+                <Modal handleClose={handleClose}>
+                    <NewForm addSong={addSong} />
+                </Modal> 
+            }
+            
+            <button onClick={handleOpen}>Add New Song</button>
+            
 
             {showSongs && ( //conditional template 
                 <div>

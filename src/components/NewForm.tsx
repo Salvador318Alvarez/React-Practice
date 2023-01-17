@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const newForm = () => {
+const newForm = ({addSong}) => {
     const [title, setTitle] = useState('')
     const [date, setDate] = useState('')
 
@@ -20,7 +20,8 @@ const newForm = () => {
             date:date,
             id: Math.floor(Math.random()*10000000)
         }
-        console.log(song);
+
+        addSong(song);
         resetForm()
         
     }
@@ -30,6 +31,7 @@ const newForm = () => {
             <label>
                 <span>Title:</span>
                 <input 
+                    required
                     type="text" 
                     value={title}
                     onChange={(e) => setTitle(e.target.value)} />
@@ -37,13 +39,13 @@ const newForm = () => {
             <label>
                 <span>Date:</span>
                 <input 
+                    required
                     type="date" 
                     value={date} 
                     // this is known as controlled inputs
                     onChange={(e) => setDate(e.target.value)}/>
             </label>
             <button>Submit</button>
-            <p>Title: {title}</p>
             
         </form>
      );
