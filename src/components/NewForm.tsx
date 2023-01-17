@@ -1,20 +1,20 @@
 import { useState, useRef } from "react";
 
 const newForm = ({addSong}) => {
-    // const [title, setTitle] = useState('')
-    // const [date, setDate] = useState('')
-    const title = useRef()
-    const date = useRef()
+    const [title, setTitle] = useState('')
+    const [date, setDate] = useState('')
+    // const title = useRef()
+    // const date = useRef()
 
     // const handleChange = (e:any) => {
     //     setTitle(e.target.value)
     // }
 
     const resetForm = () => {
-        // setTitle('')
-        // setDate('')
-        date.current.value = ''
-        title.current.value = ''
+        setTitle('')
+        setDate('')
+        // date.current.value = ''
+        // title.current.value = ''
     }
 
     const handleSubmit = (e:any) => {
@@ -22,8 +22,8 @@ const newForm = ({addSong}) => {
         console.log(title, date);
         
         const song = {
-            title: title.current.value,
-            date:date.current.value,
+            title: title,
+            date:date,
             id: Math.floor(Math.random()*10000000)
         }
 
@@ -39,9 +39,9 @@ const newForm = ({addSong}) => {
                 <input 
                     required
                     type="text"
-                    ref={title} 
-                    // value={title}
-                    // onChange={(e) => setTitle(e.target.value)} 
+                    // ref={title} 
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)} 
                 />
             </label>
             <label>
@@ -49,10 +49,10 @@ const newForm = ({addSong}) => {
                 <input 
                     required
                     type="date" 
-                    ref={date}
-                    // value={date} 
+                    // ref={date}
+                    value={date} 
                     // this is known as controlled inputs
-                    // onChange={(e) => setDate(e.target.value)}
+                    onChange={(e) => setDate(e.target.value)}
                     />
             </label>
             <button>Submit</button>
