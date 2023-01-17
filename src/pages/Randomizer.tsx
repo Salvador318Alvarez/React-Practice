@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../components/Modal";
+import NewForm from "../components/NewForm";
 
 
 const Randomizer = () => {
@@ -23,12 +24,11 @@ const Randomizer = () => {
             <h1> Randomizer</h1>
             {showModal! && 
                 <Modal handleClose={handleClose}>
-                    <h2>Randomizer Page is under construction</h2>
-                    <Link to='/'>Back to Home Page</Link>
+                    <NewForm />
                 </Modal> 
             }
             
-            <button onClick={handleOpen}>Open Modal</button>
+            <button onClick={handleOpen}>Add New Song</button>
             
         </section>
      );
