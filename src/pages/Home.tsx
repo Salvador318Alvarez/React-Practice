@@ -76,3 +76,12 @@ const Home = () => {
 }
  
 export default Home;
+//default means that you don't have to put it in 
+// curly braces when import and you can call it 
+// what you want. 
+//import whatever from '/home'
+
+//when put exporting other stuff add 
+//export {variable, function}
+// and then import it with curly braces later
+// import {variable, function} from '/home'
