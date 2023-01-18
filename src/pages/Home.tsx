@@ -30,7 +30,7 @@ const Home = () => {
         }
     }
 
-    const Calculations = (a, b) => [
+    const Calculations = (a:any, b:any) => [
         a + b,
         Math.abs(a-b),
         a * b, 
@@ -41,22 +41,36 @@ const Home = () => {
     // they do when its an array though
     const [arraySum, arrayDiff, arrayProduct] = Calculations(3,5)
     
+    //...nums spreads the array into individual.
+    //get three separate string
+    console.log(nums);
+    console.log(...nums);
+    const idPerson = {...person, id: 1}
+    
+    
+
+
     return ( 
         <section>
             <h1>Home</h1>
-
-          
             <hr/>
+
             <Billboard title="Events" subtitle={subtitle}/> 
             <Billboard title="Songs" subtitle='sub 1'/> 
             <Billboard title="Games" subtitle='sub 2'/> 
             <Billboard title="Works" subtitle='sub 3'/> 
             <hr/>
+
             <p>{name} {age} {color}</p>
             <p>{a}, {b}, {c}</p>
             <p>{getCalculations(3,5).product}</p>
             <p>{sum}, {product}, {diff}</p>
             <p>{arraySum}, {arrayProduct}, {arrayDiff}</p>
+            <hr/>
+
+            <p>{nums}</p> 
+            <p>{idPerson.name}</p>
+
         </section>
      );
 }
