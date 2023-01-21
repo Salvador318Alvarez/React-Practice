@@ -11,7 +11,7 @@ const Home = () => {
     const {name, age, color} = person
     //grabs those values and puts it in variable name and age
 
-    const nums = [1,3,5,7,9]
+    const nums = [1,3,5,7,9];
 
     const [a,b,c] = nums
     //grabs the first three values of the nums array 
