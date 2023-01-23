@@ -15,13 +15,13 @@ const Home = () => {
     
     return ( 
         <>
-            <button style={{marginTop: '20vh'}} onClick={() => 
+            <button style={{marginTop: '10vh'}} onClick={() => 
                 (url === 'https://jsonplaceholder.typicode.com/todos/')?
                 setUrl('https://jsonplaceholder.typicode.com/posts/'):
                 setUrl('https://jsonplaceholder.typicode.com/todos/')
             }
             >update URL</button>
-            <button style={{marginTop: '20vh'}} onClick={() => 
+            <button onClick={() => 
                 setUrl('https://jsonplaceholder.typicode.com/todos/?completed=true')
             }
             >
