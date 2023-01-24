@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const Home = () => {
     const [random, setRandom] = useState([])
     const [url, setUrl] = useState('https://jsonplaceholder.typicode.com/todos/')
 
-    const fetchPosts = async () => {
+    const fetchPosts = useCallback(async () => {
         const response = await fetch(url)
         const json = await response.json()
         setRandom(json)
-    }
+    }, [url])
 
     useEffect(() => {
         fetchPosts()
-    }, [url]) //dependency 
+    }, [fetchPosts]) //dependency 
  
     console.log(random);
     
