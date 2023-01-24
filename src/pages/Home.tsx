@@ -4,10 +4,14 @@ const Home = () => {
     const [random, setRandom] = useState([])
     const [url, setUrl] = useState('https://jsonplaceholder.typicode.com/todos/')
 
+    const fetchPosts = async () => {
+        const response = await fetch(url)
+        const json = await response.json()
+        setRandom(json)
+    }
+
     useEffect(() => {
-        fetch(url)
-        .then(response => response.json())
-        .then(json => setRandom(json))
+        fetchPosts()
     }, [url]) //dependency 
  
     console.log(random);
