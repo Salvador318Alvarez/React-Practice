@@ -1,21 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
+import useFetch from '../hooks/useFetch'
+import { cool } from "../hooks/useFetch";
 
 const Home = () => {
-    const [random, setRandom] = useState([])
     const [url, setUrl] = useState('https://jsonplaceholder.typicode.com/todos/')
+    const { data:random } = useFetch(url)
 
-    const fetchPosts = useCallback(async () => {
-        const response = await fetch(url)
-        const json = await response.json()
-        setRandom(json)
-    }, [url])
-
-    useEffect(() => {
-        fetchPosts()
-    }, [fetchPosts]) //dependency 
- 
-    console.log(random);
-    
+    console.log(cool);
     
     return ( 
         <>
@@ -31,7 +22,7 @@ const Home = () => {
             >
                 update endpoint
             </button>
-            {random.map(post => (
+            {random && random.map(post => ( //only if have a value
                 <div key={post.id}>
                     <h3>{post.title}</h3>
                     <p>{post.body}</p>
