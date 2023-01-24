@@ -2,23 +2,42 @@
 // has to start with use
 import {useState, useEffect} from 'react'
 
-export const cool = 'cool';
+// export const cool = 'cool';
 
 const useFetch = (url) => {
-    
     const [data, setData] = useState(null)
+    const [isPending, setIsPending] = useState(false)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(url)
-            const json = await res.json()
-            setData(json)
+            setIsPending(true)
+
+            try {
+                const res = await fetch(url)
+                // console.log(res);
+                
+                if(!res.ok) {
+                    throw new Error(res.status)
+                }
+                
+                const json = await res.json()
+    
+                setIsPending(false)
+                setData(json)
+                setError(null)
+            } catch (err) {
+                setIsPending(false)
+                setError('Could not fetch data')
+                // console.log(err.message);
+            }
+           
         }
     
         fetchData()
     }, [url])
 
-    return { data }
+    return { data, isPending, error }
 }
 
 export default useFetch; 
