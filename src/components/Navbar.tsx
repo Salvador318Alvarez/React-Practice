@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
 
+//learning context api
+
+
 const NavBar = () => {
     return ( 
     <nav>
