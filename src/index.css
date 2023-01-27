@@ -20,6 +20,9 @@ nav {
   color: #fff;
 }
 
+nav a.active {
+  color: yellow;
+}
 nav h1 {
   margin: 0 0 0 2vw;
   font-size: 3vh;
