@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 //learning context api
-
+//learning reducers
 
 const NavBar = () => {
     return ( 
